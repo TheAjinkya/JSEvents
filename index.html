@@ -8,13 +8,36 @@
 </head>
 <body>
 	<div>
-		FirstName: <input type="text" id="field1" value="Ajinkya"><hr/>
+		FirstName: <input type="text" id="field1" onkeydown="keyDownFunction()" value="Ajinkya"><hr/>
 
 		<button onclick="clickFunction()">Click</button><hr/>
-		
+
 		<p  ondblclick="dblClickFunction()">
 			Click here twice
 		</p>
+
+
+		<h2>The XMLHttpRequest Object</h2>
+
+		<button type="button" onclick="loadDoc()">Request data</button>
+
+		<p id="demo"></p>
+
+		<script>
+			function loadDoc() {
+				var xhttp = new XMLHttpRequest();
+				xhttp.onreadystatechange = function() {
+					if (this.readyState == 4 && this.status == 200) {
+						console.log(this)
+						document.getElementById("demo").innerHTML = this.responseText;
+					}
+				};
+				xhttp.open("GET", "https://jsonplaceholder.typicode.com/users", true);
+				xhttp.send();
+			}
+		</script>
+
+
 
 	</div>
 	<script>
@@ -24,6 +47,13 @@
 
 		function dblClickFunction() {
 			alert(document.getElementById("field1").value)
+		}
+		function keyDownFunction(){
+			alert("KeyDown is pressed")
+		}
+
+		function keyDownFunction(){
+			alert("KeyDown is pressed")
 		}
 
 	</script>
